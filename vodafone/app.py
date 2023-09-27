@@ -1,3 +1,4 @@
+
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -10,15 +11,10 @@ import base64
 st.title('📈 Time Series Forecasting - FBProphet')
 
 """
-### ManpowerGroup 
+### Vodafone
 
-ManpowerGroup (formerly known as Manpower Inc.) is a Fortune 500 American multinational corporation headquartered 
-in Milwaukee, Wisconsin. Founded in 1948 by Elmer Winter and Aaron Scheinfeld, ManpowerGroup is the third-largest 
-staffing firm in the world behind Swiss firm Adecco and Dutch firm Randstad.[9]  
-The company provides administrative & support services, professional services, and business services through its 
-four primary brands: Manpower (contingent staffing & permanent recruitment), 
-Experis (professional resourcing and project-based solutions[buzzword]), Right Management (career management, 
-workforce consulting, and training & development), and ManpowerGroup Solutions 
+Vodafone is a leading telecommunications company in Europe and Africa, led by our purpose to connect for a better future.
+We develop a range of leading products and services to connect our customers and help build digital societies of the future.
 
 """
 
@@ -41,6 +37,8 @@ st.info(
 
 if df is not None:
     data = pd.read_csv(df)
+    data = data[['Date', 'Volume']]
+    data = data.rename(columns={"Date": "ds", "Volume": "y"})
     data['ds'] = pd.to_datetime(data['ds'],errors='coerce') 
     
     st.write(data)
@@ -99,3 +97,6 @@ if df is not None:
     b64 = base64.b64encode(csv_exp.encode()).decode()  # some strings <-> bytes conversions necessary here
     href = f'<a href="data:file/csv;base64,{b64}">Download CSV File</a> (right-click and save as ** &lt;forecast_name&gt;.csv**)'
     st.markdown(href, unsafe_allow_html=True)
+	
+	
+	
