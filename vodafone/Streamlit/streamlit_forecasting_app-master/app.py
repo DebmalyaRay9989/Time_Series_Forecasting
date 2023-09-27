@@ -32,7 +32,7 @@ df = st.file_uploader('Import the time series csv file here. Columns must be lab
 st.info(
             f"""
                 👆 Upload a .csv file first. Sample to try: (https://github.com/DebmalyaRay9989/Time_Series_Forecasting/tree/main/example_data/IDEA.NS.csv)
-		Here, we have considered the 👆 Date and 👆 Volume columns from the stock price data.
+		Here, we have considered 👆 Date and 👆 Volume columns from the `stock price data`.
                 """
         )
 
