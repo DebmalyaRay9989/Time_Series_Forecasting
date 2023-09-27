@@ -1,3 +1,4 @@
+
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -7,18 +8,13 @@ from prophet.diagnostics import cross_validation
 from prophet.plot import plot_cross_validation_metric
 import base64
 
-st.title('📈 Time Series Forecasting - FBProphet')
+st.title('📈 Time Series Forecasting - Stock Price Prediction')
 
 """
-### ManpowerGroup 
+### Vodafone
 
-ManpowerGroup (formerly known as Manpower Inc.) is a Fortune 500 American multinational corporation headquartered 
-in Milwaukee, Wisconsin. Founded in 1948 by Elmer Winter and Aaron Scheinfeld, ManpowerGroup is the third-largest 
-staffing firm in the world behind Swiss firm Adecco and Dutch firm Randstad.[9]  
-The company provides administrative & support services, professional services, and business services through its 
-four primary brands: Manpower (contingent staffing & permanent recruitment), 
-Experis (professional resourcing and project-based solutions[buzzword]), Right Management (career management, 
-workforce consulting, and training & development), and ManpowerGroup Solutions 
+Vodafone is a leading telecommunications company in Europe and Africa, led by our purpose to connect for a better future.
+We develop a range of leading products and services to connect our customers and help build digital societies of the future.
 
 """
 
@@ -31,16 +27,19 @@ You'll be able to import your data from a CSV file, visualize trends and feature
 """
 ### Step 1: Import Data
 """
-df = st.file_uploader('Import the time series csv file here. Columns must be labeled ds and y. The input to Prophet is always a dataframe with two columns: ds and y. The ds (datestamp) column should be of a format expected by Pandas, ideally YYYY-MM-DD for a date or YYYY-MM-DD HH:MM:SS for a timestamp. The y column must be numeric, and represents the measurement we wish to forecast.', type='csv')
+df = st.file_uploader('Import the time series csv file here. Columns must be labeled ds and y. The input to Prophet is always a data frame with two columns: ds and y. The ds (datestamp) column should be of a format expected by Pandas, ideally YYYY-MM-DD for a date or YYYY-MM-DD HH:MM:SS for a timestamp. The y column must be numeric, and represents the measurement we wish to forecast.', type='csv')
 
 st.info(
             f"""
-                👆 Upload a .csv file first. Sample to try: (https://raw.githubusercontent.com/zachrenwick/streamlit_forecasting_app/master/example_data/example_wp_log_peyton_manning.csv)
+                👆 Upload a .csv file first. Sample to try: (https://github.com/DebmalyaRay9989/Time_Series_Forecasting/tree/main/example_data/IDEA.NS.csv)
+		Here, we have considered the 👆 Date and 👆 Volume columns from the stock price data.
                 """
         )
 
 if df is not None:
     data = pd.read_csv(df)
+    data = data[['Date', 'Volume']]
+    data = data.rename(columns={"Date": "ds", "Volume": "y"})
     data['ds'] = pd.to_datetime(data['ds'],errors='coerce') 
     
     st.write(data)
@@ -99,3 +98,6 @@ if df is not None:
     b64 = base64.b64encode(csv_exp.encode()).decode()  # some strings <-> bytes conversions necessary here
     href = f'<a href="data:file/csv;base64,{b64}">Download CSV File</a> (right-click and save as ** &lt;forecast_name&gt;.csv**)'
     st.markdown(href, unsafe_allow_html=True)
+	
+	
+	
