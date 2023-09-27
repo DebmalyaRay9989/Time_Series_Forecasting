@@ -31,7 +31,7 @@ df = st.file_uploader('Import the time series csv file here. Columns must be lab
 
 st.info(
             f"""
-                👆 Upload a .csv file first. Sample to try: (https://raw.githubusercontent.com/zachrenwick/streamlit_forecasting_app/master/example_data/example_wp_log_peyton_manning.csv)
+                👆 Upload a .csv file first. Sample to try: (https://github.com/DebmalyaRay9989/Time_Series_Forecasting/tree/main/example_data/IDEA.NS.csv)
                 """
         )
 
