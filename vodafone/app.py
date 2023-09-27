@@ -8,7 +8,7 @@ from prophet.diagnostics import cross_validation
 from prophet.plot import plot_cross_validation_metric
 import base64
 
-st.title('📈 Time Series Forecasting - FBProphet')
+st.title('📈 Time Series Forecasting - Stock Price Prediction')
 
 """
 ### Vodafone
@@ -27,11 +27,12 @@ You'll be able to import your data from a CSV file, visualize trends and feature
 """
 ### Step 1: Import Data
 """
-df = st.file_uploader('Import the time series csv file here. Columns must be labeled ds and y. The input to Prophet is always a dataframe with two columns: ds and y. The ds (datestamp) column should be of a format expected by Pandas, ideally YYYY-MM-DD for a date or YYYY-MM-DD HH:MM:SS for a timestamp. The y column must be numeric, and represents the measurement we wish to forecast.', type='csv')
+df = st.file_uploader('Import the time series csv file here. Columns must be labeled ds and y. The input to Prophet is always a data frame with two columns: ds and y. The ds (datestamp) column should be of a format expected by Pandas, ideally YYYY-MM-DD for a date or YYYY-MM-DD HH:MM:SS for a timestamp. The y column must be numeric, and represents the measurement we wish to forecast.', type='csv')
 
 st.info(
             f"""
-                👆 Upload a .csv file first. Sample to try: (https://raw.githubusercontent.com/zachrenwick/streamlit_forecasting_app/master/example_data/example_wp_log_peyton_manning.csv)
+                👆 Upload a .csv file first. Sample to try: (https://github.com/DebmalyaRay9989/Time_Series_Forecasting/tree/main/example_data/IDEA.NS.csv)
+		Here, we have considered the 👆 Date and 👆 Volume columns from the stock price data.
                 """
         )
 
