@@ -3,5 +3,5 @@ prophet
 numpy
 protobuf
 streamlit
-pandas==4.4.1
+pandas==1.3.5
 
